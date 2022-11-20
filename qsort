@@ -1,0 +1,28 @@
+#include <stdio.h>
+void swap(char* e1, char* e2, int nitems)
+{
+	int i = 0;
+	for ( i = 0; i < nitems; i++)
+	{
+		char t = *e1;
+		*e1 = *e2;
+		*e2 = t;
+		e1++;
+		e2++;
+	}
+}
+void bubble_sort(void* base, size_t nitems, size_t size, int (*compar)(const void* e1, const void* e2))
+{
+	int i = 0;
+	for (i = 0; i < nitems - 1; i++)
+	{
+		int j = 0;
+		for (j = 0; j < nitems - 1 - i; j++)
+		{
+			if (compar((char*)base + j * size, (char*)base + (j + 1) * size) > 0)
+			{
+				swap((char*)base + j * size, (char*)base + (j + 1) * size, nitems);
+			}
+		}
+	}
+}
